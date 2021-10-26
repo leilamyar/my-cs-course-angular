@@ -1,10 +1,24 @@
 <header>
   <h1>My CS Course</h1>
 
-  <nav>
+  <!-- <nav>
     <a routerLink="/home">Home</a>
     <a routerLink="/data-structures">Data Structures</a>
     <a routerLink="/sort-algo">Sorting Algorithms</a>
     <a routerLink="/">Search Algorithms</a>
+  </nav> -->
+
+  <nav *ngFor="let ni of navItems">
+    <div class="max-h-4">
+      <a
+        (click)="toggleNavItems()"
+        routerLink="ni.route">{{ ni.name }}</a>
+    </div>
+    <div
+      *ngFor="let sub of ni.subRoutes"
+      class="submenu"
+      [ngClass]="{ 'expanded': !toggleClass }"> {{ sub.name }}
+    </div>
   </nav>
+
 </header>
